@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyciAlgoClient – Investissement automatisé</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- 🎨 Styles CSS intégrés -->
+  <style>
+    :root {
+      --bg-color: #0e2036;
+      --text-color: #f0f0f0;
+      --accent: #2b84da;
+      --contrast: #62b8f3;
+      --logo-filter: brightness(1);
+    }
+    [data-theme="light"] {
+      --bg-color: #ffffff;
+      --text-color: #1d1d1d;
+      --accent: #0077cc;
+      --contrast: #005bb5;
+      --logo-filter: brightness(1);
+    }
+    body {
+      background: linear-gradient(180deg, var(--bg-color), #1c3255);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    header {
+      position: sticky; top: 0;
+      background: var(--bg-color);
+      display: flex; justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    nav a {
+      color: var(--text-color);
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: var(--contrast); }
+    #promo-bar {
+      background-color: var(--accent);
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--contrast);
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    section {
+      padding: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    h2 {
+      text-align: center;
+      color: var(--contrast);
+      margin-bottom: 1rem;
+    }
+    ul {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    #onboarding ul li {
+      background-color: rgba(255,255,255,0.05);
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    #abonnement-status {
+      background-color: rgba(0,0,0,0.3);
+      color: var(--text-color);
+      padding: 0.5rem;
+      text-align: center;
+      font-style: italic;
+    }
+    .logo {
+      height: 200px;
+      filter: var(--logo-filter);
+    }
+    .logo2 {
+      height: 50px;
+      filter: var(--logo-filter);
+    }
+    footer {
+      background: var(--bg-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+    #theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+<!-- 🔔 Bandeau promo -->
+<div id="promo-bar">🎉 Offre limitée : 1 mois gratuit pour les 100 premiers inscrits !</div>
+
+<!-- 🧭 En-tête avec navigation sticky -->
+<header>
+  <img src="logo.jpeg" alt="Cyber Intellect Consulting" class="logo" />
+  <h1>Cyber Intellect Consulting</h1>
+  <nav>
+    <a href="#fonctionnement">Fonctionnement</a>
+    <a href="#benefices">Avantages</a>
+    <a href="#onboarding">Onboarding</a>
+    <a href="#faq">FAQ</a>
+    <button id="theme-toggle">🌓 Changer le thème</button>
+  </nav>
+</header>
+
+<!-- 🔓 Abonnement affiché -->
+<div id="abonnement-status">🔓 Abonnement actif – formule Simple (3 mois restants)</div>
+
+<!-- 📌 Section fonctionnement -->
+<section id="fonctionnement">
+  <h2>Comment ça fonctionne</h2>
+  <ul>
+    <li>Téléchargez l'app CyciAlgoClient</li>
+    <li>Créez votre profil investisseur</li>
+    <li>Connectez votre compte MT5</li>
+    <li>Laissez l’algorithme agir selon vos préférences</li>
+  </ul>
+</section>
+
+<!-- 🧠 Section avantages -->
+<section id="benefices">
+  <h2>Avantages Cyci</h2>
+  <ul>
+    <li>Gestion automatisée et transparente</li>
+    <li>Protection des données via cloud sécurisé</li>
+    <li>Interface intuitive pour débutants et experts</li>
+    <li>Support personnalisé selon votre abonnement</li>
+  </ul>
+</section>
+
+<!-- ✅ Onboarding visuel -->
+<section id="onboarding">
+  <h2>Vos premiers pas avec CyciAlgoClient</h2>
+  <ul>
+    <li>✔ Créez votre profil investisseur</li>
+    <li>✔ Téléchargez l'app CyciAlgoClient</li>
+    <li>✔ Connectez votre compte MT5</li>
+    <li>✔ Lancez votre stratégie automatisée</li>
+  </ul>
+  <a href="http://127.0.0.1:8000/#mes-algorithmes" class="cta-btn">
+    📥 Télécharger CyciAlgoClient
+  </a>
+</section>
+
+<!-- 📘 Section FAQ -->
+<section id="faq">
+  <h2>Questions Fréquentes</h2>
+  <ul>
+    <li>🧠 Est-ce que je peux choisir mes stratégies moi-même ? Oui, en quelques clics.</li>
+    <li>🔒 Mes données sont-elles sécurisées ? Oui, hébergement cloud chiffré.</li>
+    <li>📱 L'application est-elle disponible sur mobile ? Absolument, iOS et Android.</li>
+  </ul>
+</section>
+
+<!-- 👣 Pied de page -->
+<footer>
+  <img src="logo.jpeg" class="logo2" alt="Logo footer" />
+  <p>© 2025 Cyber Intellect Consulting – Investissement automatisé</p>
+  <p>Design propulsé avec Copilot & Michel 💼✨</p>
+</footer>
+
+<!-- 🌗 Script thème clair/sombre -->
+<script>
+  const toggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  toggle.onclick = () => {
+    body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
+  };
+</script>
+
+</body>
+</html>
