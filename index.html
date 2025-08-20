@@ -6,6 +6,10 @@
   <title>CyciAlgoClient – Investissement automatisé</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <style>
+    html {
+  scroll-behavior: smooth;
+}
+
     :root {
       --bg-color: #0e2036;
       --text-color: #f0f0f0;
@@ -20,6 +24,7 @@
       --contrast: #005bb5;
       --logo-filter: brightness(1);
     }
+    
     body {
       background: linear-gradient(180deg, var(--bg-color), #1c3255);
       color: var(--text-color);
@@ -92,6 +97,64 @@
       height: 200px;
       filter: var(--logo-filter);
     }
+    .dashboard {
+  padding: 40px;
+  
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.dashboard p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--accent);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+}
+
+.cta-button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #0078D7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #005fa3;
+}
+
     footer {
     background-color: #1a1a1a;
     color: var(--text-color);
@@ -99,8 +162,106 @@
     padding: 2rem;
     font-size: 0.9rem;
   }
+  .hero-offer {
+  background: linear-gradient(135deg, #0078D7, #005fa3);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-offer .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.urgency {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.cta-button {
+  background-color: #ffffff;
+  color: #0078D7;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e6e6e6;
+}
+.inscription-section {
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.inscription-section h2 {
+  text-align: center;
+  color: #0078D4;
+}
+
+.form-inscription label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.form-inscription input,
+.form-inscription select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-inscription button {
+  margin-top: 30px;
+  width: 100%;
+}
+
   </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('performanceChart').getContext('2d');
+  const performanceChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['J1', 'J2', 'J3', 'J4', 'J5'],
+      datasets: [{
+        label: 'Performance (%)',
+        data: [2, 4, 6, 8, 12],
+        borderColor: '#0078D7',
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
 <body data-theme="dark">
 
 <div id="promo-bar">🎉 Offre limitée : 1 mois gratuit pour les 100 premiers inscrits !</div>
@@ -149,7 +310,52 @@
       📥 Télécharger CyciAlgoClient
     </a>
   </section>
+  <section class="dashboard">
+    <h2>📊 Tableau de bord personnalisé</h2>
+    <p>Suivez vos investissements en temps réel et ajustez votre stratégie selon vos objectifs.</p>
   
+    <div class="dashboard-grid">
+      <div class="card">
+        <h3>Performance</h3>
+        <p>Rendement actuel : <strong>+12.4%</strong></p>
+        <canvas id="performanceChart"></canvas>
+      </div>
+  
+      <div class="card">
+        <h3>Historique des transactions</h3>
+        <ul>
+          <li>📈 Achat BTC - 0.5 lots - 12/08</li>
+          <li>📉 Vente ETH - 1 lot - 11/08</li>
+          <li>📈 Achat AAPL - 2 lots - 10/08</li>
+        </ul>
+      </div>
+  
+      <div class="card">
+        <h3>Stratégie active</h3>
+        <p>Type : <strong>Équilibrée</strong></p>
+        <p>Risque : <strong>Moyen</strong></p>
+        <p>Secteurs : Tech, Crypto, Énergie</p>
+      </div>
+  
+      <div class="card">
+        <h3>Recommandations</h3>
+        <p>💡 Ajuster l’exposition crypto à 30%</p>
+        <p>🔔 Opportunité sur Tesla (TSLA)</p>
+      </div>
+    </div>
+  
+    <button class="cta-button">Accéder à mon tableau complet</button>
+  </section>
+  <section class="hero-offer">
+    <div class="container">
+      <h1 class="main-title">🎉 1 mois gratuit pour les 100 premiers inscrits</h1>
+      <p class="subtitle">Rejoignez <strong>CyciAlgoClient</strong> et laissez l’algorithme investir pour vous.</p>
+      <p class="urgency">⏳ Il reste <span id="places-left">37</span> places disponibles !</p>
+      <a href="#inscription" class="cta-button">Je m’inscris maintenant</a>
+      
+    </div>
+  </section>
+   
   
 <!-- autres sections ici : Partenariat, Inscription, Dashboard, Sécurité, FAQ -->
 <section id="partnership" >
@@ -192,7 +398,37 @@
       <a href="mailto:massina.michel@gcyci.com" style="display:inline-block; margin-top:1rem; padding:0.5rem 1rem; background:#0077cc; color:white; border-radius:4px; text-decoration:none;">📩 Talk About Us</a>
     </div>
   </section>
-
+  <section id="inscription" class="inscription-section">
+    <h2>Inscrivez-vous dès maintenant</h2>
+    <p>Profitez d’un mois gratuit et laissez l’algorithme investir pour vous.</p>
+  
+    <form action="traitement_inscription.php" method="post" class="form-inscription">
+      <label for="nom">Nom complet</label>
+      <input type="text" id="nom" name="nom" required>
+  
+      <label for="email">Adresse email</label>
+      <input type="email" id="email" name="email" required>
+  
+      <label for="courtier">Choisissez votre courtier</label>
+      <select id="courtier" name="courtier" required>
+        <option value="">-- Sélectionnez --</option>
+        <option value="mt5">MetaTrader 5</option>
+        <option value="etoro">eToro</option>
+        <option value="binance">Binance</option>
+      </select>
+  
+      <label for="strategie">Stratégie souhaitée</label>
+      <select id="strategie" name="strategie">
+        <option value="equilibree">Équilibrée</option>
+        <option value="agressive">Agressive</option>
+        <option value="prudente">Prudente</option>
+      </select>
+  
+      <button type="submit" class="cta-button">Je m’inscris</button>
+    </form>
+  </section>
+  
+  
   <footer >
     <img src="logo.jpeg" class="logo" alt="Logo footer" />
     <p>&copy; 2025 CyciAlgoClient – Propulsé par l’innovation 🚀</p>
