@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tableau de Bord Performance{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px; /* Plus large pour le tableau de bord */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .messages li {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .messages .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .messages .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .messages .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .messages .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+        /* Styles supplémentaires pour les tableaux */
+        .table-header {
+            background-color: #e5e7eb;
+        }
+        .table-row-odd {
+            background-color: #ffffff;
+        }
+        .table-row-even {
+            background-color: #f9fafb;
+        }
+        .trade-buy {
+            color: #22c55e; /* green-500 */
+            font-weight: bold;
+        }
+        .trade-sell {
+            color: #ef4444; /* red-500 */
+            font-weight: bold;
+        }
+        .pl-positive {
+            color: #22c55e; /* green-500 */
+            font-weight: bold;
+        }
+        .pl-negative {
+            color: #ef4444; /* red-500 */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4 bg-white shadow-lg rounded-lg mt-8">
+        <nav class="mb-6 flex justify-between items-center">
+            <div>
+                <a href="{% url 'home' %}" class="text-blue-600 hover:text-blue-800 font-semibold text-lg mr-4">Accueil</a>
+                <a href="{% url 'broker_integrations:account_list' %}" class="text-blue-600 hover:text-blue-800 font-semibold text-lg mr-4">Comptes Brokers</a>
+                <a href="{% url 'trading_engine:algo_config_list' %}" class="text-blue-600 hover:text-blue-800 font-semibold text-lg mr-4">Mes Algorithmes</a>
+                <span class="text-gray-500 font-bold text-lg">Tableau de Bord</span>
+            </div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'admin:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Déconnexion</a>
+            {% else %}
+            <a href="{% url 'admin:login' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Connexion</a>
+            {% endif %}
+        </nav>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}
+        <!-- Le contenu spécifique de chaque page ira ici -->
+        {% endblock %}
+    </div>
+</body>
+</html>
