@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="dashboard">
+  <h2>Bienvenue {{ user.username }} 👋</h2>
+
+  {% if user.has_free_month %}
+    <div class="offer-card">
+      <h3>🎁 Mois gratuit actif</h3>
+      <p>Expire le : <strong>{{ user.free_month_expires|date:"d/m/Y" }}</strong></p>
+    </div>
+  {% else %}
+    <div class="offer-card">
+      <h3>⏳ Offre expirée</h3>
+      <p>Vous n’avez pas de mois gratuit actif.</p>
+      <a href="{% url 'abonnement' %}" class="cta-button">Voir les offres</a>
+    </div>
+  {% endif %}
+
+  <div class="strategy-card">
+    <h3>📈 Stratégie active</h3>
+    <p>Type : {{ user.strategie }}</p>
+    <p>Risque : {{ user.risque }}</p>
+    <p>Secteurs : {{ user.secteurs }}</p>
+  </div>
+
+  <div class="transactions">
+    <h3>📊 Historique des transactions</h3>
+    {% for tx in transactions %}
+      <p>{{ tx.date }} – {{ tx.type }} {{ tx.asset }} – {{ tx.volume }} lots</p>
+    {% empty %}
+      <p>Aucune transaction enregistrée.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+
+
