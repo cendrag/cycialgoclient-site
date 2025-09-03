@@ -271,11 +271,11 @@
   <h1>Cyber Intellect Consulting</h1>
   <nav>
     <ul>
-     <li><a href="#fonctionnement">Fonctionnement</a></li>
-     <li><a href="#benefices">Avantages</a></li>
-     <li><a href="#partnership">Partenariat</a></li>
-     <li><a href="#inscription">Inscription</a></li>
-     <li><a href="#faq">FAQ</a></li>
+     <a href="#fonctionnement">Fonctionnement</a>
+     <a href="#benefices">Avantages</a>
+     <a href="#partnership">Partenariat</a>
+     <a href="#inscription">Inscription</a>
+     <a href="#faq">FAQ</a></li>
      <li><a href="dashboard.html" class="btn">Accéder au tableau de bord</a></li>
      <button id="theme-toggle">🌓 Changer le thème</button>
     </ul>
@@ -285,19 +285,32 @@
 </header>
 <style>
   .video-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>
-
+<!-- Ta vidéo locale -->
 <div class="video-container">
-  <iframe width="560" height="315"
-          src="https://youtu.be/AzjlPptj1mQ"
-          frameborder="0"
-          allowfullscreen></iframe>
+  <iframe 
+    src="https://www.youtube-nocookie.com/embed/zObQY-nwtZg?autoplay=1&mute=1&loop=1&playlist=zObQY-nwtZg,AzjlPptj1mQ" 
+    title="Présentation CyciAlgoClient" 
+    width="0" height="0" 
+    allow="autoplay"
+    allowfullscreen 
+    frameborder="0">
+  </iframe>
+    
 </div>
-
 <section id="fonctionnement">
   <h2>Fonctionnement de l'app</h2>
   <ul>
